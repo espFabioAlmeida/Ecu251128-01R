@@ -63,6 +63,7 @@ uint8_t
 	contadorRS485Buffer = 0,
 	contadorLoraBuffer = 0,
 	contadorTimeoutLora = 0,
+	contadorTimeoutTransmissor = 0,
 	canalLora = 0;
 
 uint16_t
@@ -199,6 +200,7 @@ int main(void)
   /* USER CODE BEGIN WHILE */
   while (1)
   {
+	  acionamentoRele();
 	  protocoloLora();
 	  protocoloRS485();
     /* USER CODE END WHILE */

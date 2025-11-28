@@ -17,6 +17,7 @@ enum BOOL {
 
 #define TAMANHO_BUFFER_RS485 	32
 #define TAMANHO_BUFFER_LORA 32
+#define TIMEOUT_TRANSMISSOR 30
 
 extern UART_HandleTypeDef huart3;
 extern UART_HandleTypeDef huart4;
@@ -34,6 +35,7 @@ extern uint8_t
 	contadorRS485Buffer,
 	contadorLoraBuffer,
 	contadorTimeoutLora,
+	contadorTimeoutTransmissor,
 	canalLora;
 
 extern uint16_t
