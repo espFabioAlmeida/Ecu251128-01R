@@ -63,6 +63,11 @@ uint8_t
 	contadorRS485Buffer = 0,
 	contadorLoraBuffer = 0,
 	contadorTimeoutLora = 0,
+	contadorTimeoutTransmissor = 0,
+
+	contadorRele1 = 0,
+	contadorRele2 = 0,
+
 	canalLora = 0;
 
 uint16_t
@@ -199,6 +204,7 @@ int main(void)
   /* USER CODE BEGIN WHILE */
   while (1)
   {
+	  acionamentoRele();
 	  protocoloLora();
 	  protocoloRS485();
     /* USER CODE END WHILE */
@@ -505,9 +511,13 @@ static void MX_GPIO_Init(void)
   /* USER CODE END MX_GPIO_Init_1 */
 
   /* GPIO Ports Clock Enable */
+  __HAL_RCC_GPIOF_CLK_ENABLE();
   __HAL_RCC_GPIOC_CLK_ENABLE();
   __HAL_RCC_GPIOA_CLK_ENABLE();
   __HAL_RCC_GPIOB_CLK_ENABLE();
+
+  /*Configure GPIO pin Output Level */
+  HAL_GPIO_WritePin(OUT2_GPIO_Port, OUT2_Pin, GPIO_PIN_RESET);
 
   /*Configure GPIO pin Output Level */
   HAL_GPIO_WritePin(OUT1_GPIO_Port, OUT1_Pin, GPIO_PIN_RESET);
@@ -517,6 +527,13 @@ static void MX_GPIO_Init(void)
 
   /*Configure GPIO pin Output Level */
   HAL_GPIO_WritePin(GPIOB, LED_CPU_Pin|LED_ON_Pin, GPIO_PIN_RESET);
+
+  /*Configure GPIO pin : OUT2_Pin */
+  GPIO_InitStruct.Pin = OUT2_Pin;
+  GPIO_InitStruct.Mode = GPIO_MODE_OUTPUT_PP;
+  GPIO_InitStruct.Pull = GPIO_NOPULL;
+  GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_LOW;
+  HAL_GPIO_Init(OUT2_GPIO_Port, &GPIO_InitStruct);
 
   /*Configure GPIO pin : OUT1_Pin */
   GPIO_InitStruct.Pin = OUT1_Pin;
