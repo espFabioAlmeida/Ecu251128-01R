@@ -87,8 +87,8 @@ uint8_t configuraLora() {
 		uint8_t ponteiro = 0;
 		apagabufferEnvioLora();
 		bufferEnvioLora[0] = 0xC0; //Salvar
-		bufferEnvioLora[1] = make8(enderecoLoraTransmissor, 1);
-		bufferEnvioLora[2] = make8(enderecoLoraTransmissor, 0);
+		bufferEnvioLora[1] = make8(enderecoLoraReceptor, 1);
+		bufferEnvioLora[2] = make8(enderecoLoraReceptor, 0);
 		bufferEnvioLora[3] = 0x1A; //8N1, 9600bps, 2.4k
 		bufferEnvioLora[4] = canalLora;
 		bufferEnvioLora[5] = 0xC4; //opções
