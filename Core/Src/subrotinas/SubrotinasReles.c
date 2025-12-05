@@ -14,10 +14,26 @@ CONSTANTES DO ARQUIVO
 ACIONAMENTO RELE
 ==============================================================================*/
 void acionamentoRele() {
+	static uint8_t ultimoEstado = false;
+
 	if(contadorTimeoutTransmissor >= TIMEOUT_TRANSMISSOR) {
 		flagAcionamento = false;
 	}
-	setPin(OUT1_GPIO_Port, OUT1_Pin, flagAcionamento);
+
+	if(ultimoEstado == flagAcionamento) {
+		return;
+	}
+
+	ultimoEstado = flagAcionamento;
+
+	if(flagAcionamento) {
+		contadorRele1 = TEMPO_PULSO_RELE;
+		contadorRele2 = 0;
+		return;
+	}
+
+	contadorRele2 = TEMPO_PULSO_RELE;
+	contadorRele1 = 0;
 }
 /*==============================================================================
 FIM DO ARQUIVO

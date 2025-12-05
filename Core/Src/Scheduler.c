@@ -41,6 +41,22 @@ void tarefas100ms() {
 	else {
 		on(LED_ON_GPIO_Port, LED_ON_Pin);
 	}
+
+	if(contadorRele1) {
+		on(OUT1_GPIO_Port, OUT1_Pin);
+		contadorRele1 --;
+	}
+	else {
+		off(OUT1_GPIO_Port, OUT1_Pin);
+	}
+
+	if(contadorRele2) {
+		on(OUT2_GPIO_Port, OUT2_Pin);
+		contadorRele2 --;
+	}
+	else {
+		off(OUT2_GPIO_Port, OUT2_Pin);
+	}
 }
 /*==============================================================================
 TAREFAS 1s

@@ -19,6 +19,8 @@ enum BOOL {
 #define TAMANHO_BUFFER_LORA 32
 #define TIMEOUT_TRANSMISSOR 30
 
+#define TEMPO_PULSO_RELE 20
+
 extern UART_HandleTypeDef huart3;
 extern UART_HandleTypeDef huart4;
 extern I2C_HandleTypeDef hi2c1;
@@ -36,6 +38,10 @@ extern uint8_t
 	contadorLoraBuffer,
 	contadorTimeoutLora,
 	contadorTimeoutTransmissor,
+
+	contadorRele1,
+	contadorRele2,
+
 	canalLora;
 
 extern uint16_t
